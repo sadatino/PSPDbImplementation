@@ -9,7 +9,7 @@ namespace Implementation
 
         private string mainText = "\nTYPE NUMBER TO PERFORM ACTION \n";
         private string options = "1. Create new user\n" +
-                                 "2. Check if user exists\n" +
+                                 "2. Check all database\n" +
                                  "3. Update user\n" +
                                  "4. Delete user\n" +
                                  "0. Exit\n\n";
@@ -39,6 +39,7 @@ namespace Implementation
             {
                 Console.WriteLine(ToString());
                 int choice = GetUserChoice();
+                Console.WriteLine();
                 switch (choice)
                 {
                     case 1:

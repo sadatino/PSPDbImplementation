@@ -83,17 +83,27 @@ namespace Implementation.Services
             GetAllUserDataFromConsole();
             
             if(_passwordChecker.IsValid(_password) && _emailChecker.IsValid(_email) 
-                && _phoneChecker.IsValid(_phoneNumber)) 
+                && _phoneChecker.IsValid(_phoneNumber) && CheckIfUserHasAllFields(_name, _surname, _address)) 
             {
                 user = new User(_name, _surname, _phoneNumber, _email, _address, _password);
+                Console.WriteLine("User: \n" + user.ToString() + "\n SUCCESFULLY created.");
             }
             else
             {
                 Console.WriteLine("Failed to create user");
-                user = new User();
+                user = null;
             }
 
             return user;
+        }
+
+        public bool CheckIfUserHasAllFields(string name, string surname, string address)
+        {
+            if(string.IsNullOrEmpty(name) || string.IsNullOrEmpty(surname) || string.IsNullOrEmpty(address))
+            {
+                return false;
+            }
+            return true;
         }
 
     }
